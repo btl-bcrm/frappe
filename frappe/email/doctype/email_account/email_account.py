@@ -73,7 +73,10 @@ class EmailAccount(Document):
 					self.check_smtp()
 			else:
 				if self.enable_incoming or self.enable_outgoing:
-					frappe.throw(_("Password is required or select Awaiting Password"))
+					# Commented by SHIV on 2018/12/27
+					# bia@bt.bt doesn't require password
+					#frappe.throw(_("Password is required or select Awaiting Password"))
+					pass
 
 		if self.notify_if_unreplied:
 			if not self.send_notification_to:

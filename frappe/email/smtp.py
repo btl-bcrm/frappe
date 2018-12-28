@@ -90,7 +90,9 @@ def get_outgoing_email_account(raise_exception_not_set=True, append_to=None, sen
 				raise_exception = True
 				if email_account.smtp_server in ['localhost','127.0.0.1']:
 					raise_exception = False
-				email_account.password = email_account.get_password(raise_exception=raise_exception)
+				#SHIV
+				#email_account.password = email_account.get_password(raise_exception=raise_exception)
+				pass
 			email_account.default_sender = email.utils.formataddr((email_account.name, email_account.get("email_id")))
 
 		frappe.local.outgoing_email_account[append_to or sender_email_id or "default"] = email_account
@@ -114,7 +116,9 @@ def get_default_outgoing_email_account(raise_exception_not_set=True):
 	'''
 	email_account = _get_email_account({"enable_outgoing": 1, "default_outgoing": 1})
 	if email_account:
-		email_account.password = email_account.get_password(raise_exception=False)
+		#SHIV
+		#email_account.password = email_account.get_password(raise_exception=False)
+		pass
 
 	if not email_account and frappe.conf.get("mail_server"):
 		# from site_config.json
